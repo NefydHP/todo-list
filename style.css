@@ -1,0 +1,233 @@
+@font-face {
+	font-family: Canoodle;
+	src: url("canoodle.otf");
+}
+
+html,
+body {
+	touch-action: none;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: 0;
+	width: 100dvw;
+	height: 100dvh;
+	background-color: #2b2c30;
+}
+
+#tasks-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transform: translateX(-7%);
+
+	width: 50%;
+	height: 50%;
+
+	padding: 25px;
+	border-radius: 25px;
+
+	background-color: #303136;
+	box-shadow: 0 0 25px #222;
+
+	overflow-y: auto;
+	scrollbar-width: none;
+}
+
+/* tasks manager */
+
+#tasks-manager {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	gap: 2%;
+
+	transform: translateX(7%);
+
+	padding: 10px 20px 30px 20px;
+	border-radius: 25px;
+
+	background-color: #303136;
+	box-shadow: 0 0 25px #222;
+
+	overflow-y: auto;
+	scrollbar-width: none;
+
+	font-family: "Canoodle";
+}
+
+#tasks-manager label {
+	color: white;
+	font-size: 3.2rem;
+}
+
+#tasks-manager #tasks-control {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+#tasks-manager #task-input {
+	width: 50%;
+	padding: 5px 7px;
+	font-size: 1.5rem;
+	font-family: "Canoodle";
+	border: 2px solid #aaa;
+	border-radius: 5px;
+	background-color: #ddd;
+	color: #333;
+	outline: none;
+	transition: all 0.1s ease;
+}
+
+#tasks-manager #task-input:hover {
+	border-color: #999;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(188, 188, 188, 0.3);
+}
+
+#tasks-manager #task-input::placeholder {
+	font-family: "Canoodle";
+	font-size: 1rem;
+	color: #303136;
+	text-align: center;
+}
+
+#tasks-manager button {
+	padding: 0 20px 5px 20px;
+	font-size: 1.5rem;
+	font-family: "Canoodle";
+	border: 2px solid #93e9be;
+	border-radius: 50px;
+	background-color: #93e9be;
+	color: white;
+	cursor: pointer;
+	transition: all 0.1s ease;
+	outline: none;
+	text-shadow: 0 0 10px #000;
+}
+/*  */
+#tasks-manager button:hover {
+	background-color: #7ec7a8;
+	border-color: #7ec7a8;
+}
+
+#tasks-manager button:active {
+	background-color: #67a395;
+	border-color: #67a395;
+}
+
+/* tasks-container */
+
+#tasks-container {
+	display: flex;
+	align-items: start;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+
+	gap: 1.5em;
+}
+
+.task-container {
+	display: inline-flex;
+	align-items: center;
+	font-size: 70px;
+	gap: 0.4em;
+	cursor: pointer;
+}
+
+.task-container .task-checkbox {
+	display: none;
+}
+
+.task-container .custom-checkmark {
+	width: 1em;
+	height: 1em;
+	border: 2px solid white;
+	border-radius: 0.25em;
+	position: relative;
+	flex-shrink: 0;
+}
+
+.task-container .task-checkbox:checked + .custom-checkmark::after {
+	content: "";
+	position: absolute;
+	left: 0.3em;
+	top: 0.1em;
+	width: 0.25em;
+	height: 0.5em;
+	border: solid white;
+	border-width: 0 0.15em 0.15em 0;
+	transform: rotate(45deg);
+}
+
+.task-container .task-label {
+	color: white;
+	font-family: "Canoodle";
+	margin-top: -5%;
+	user-select: none;
+}
+
+/* testing */
+.task-label {
+	position: relative;
+	display: inline-block;
+}
+
+.task-label::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	height: 0.5rem;
+	width: 0;
+	background: currentColor;
+	transition: width 1s ease;
+
+	top: 60%; /* move line lower */
+	transform: translateY(-50%); /* center it around that position */
+}
+
+.task-label.strikethrough::after {
+	width: 100%;
+}
+
+@media (max-width: 600px) {
+	body {
+		flex-direction: column;
+		gap: 25px;
+	}
+
+	#tasks-section {
+		width: 70%;
+		transform: none;
+		overflow: scroll;
+	}
+
+	#tasks-container {
+		gap: 0;
+	}
+
+	.task-container {
+		font-size: 40px;
+		padding: 10px;
+	}
+
+	#tasks-manager {
+		transform: none;
+		width: 70%;
+		gap: 10px;
+	}
+
+	#tasks-manager label {
+		font-size: 40px;
+	}
+}
